@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_moments/flutter_moments.dart';
 
 void main() => runApp(const MyApp());
 
@@ -37,9 +38,7 @@ class MomentsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CupertinoPageScaffold(
-      child: Center(
-        child: Text("Hello"),
-      ),
+      child: Moments(),
     );
   }
 }
