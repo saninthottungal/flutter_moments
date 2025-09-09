@@ -13,7 +13,6 @@ class _MomentsState extends State<Moments> {
   @override
   void initState() {
     super.initState();
-
     pageController = PageController();
   }
 
@@ -25,9 +24,17 @@ class _MomentsState extends State<Moments> {
 
   @override
   Widget build(BuildContext context) {
+    final left = MediaQuery.sizeOf(context).width * 0.3;
+
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTapDown: (details) {},
+      onTapDown: (tap) {
+        if (tap.globalPosition.dx > left) {
+          pageController.jumpToPage((pageController.page?.round() ?? 0) + 1);
+        } else {
+          pageController.jumpToPage((pageController.page?.round() ?? 0) - 1);
+        }
+      },
       child: PageView.builder(
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
